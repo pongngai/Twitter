@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Twitter.CSC319oosd;
+package test;
 
-import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,17 +52,6 @@ public class TwitterUI extends javax.swing.JFrame {
         searchButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 searchButtonMouseClicked(evt);
-            }
-        });
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
-            }
-        });
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
             }
         });
 
@@ -121,22 +109,16 @@ public class TwitterUI extends javax.swing.JFrame {
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
         try {
             // TODO add your handling code here:
-            String word = jTextField1.getText();
             Tweet tw = new Tweet("info.txt");
+            String word = jTextField1.getText();
             tw.searchWord(word);
-          //  jTextArea1.set;    
+            jTextArea1.setText(tw.keep);
+            //jTextArea1.setText(jTextField1.getText());
+           
         } catch (IOException ex) {
             Logger.getLogger(TwitterUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_searchButtonMouseClicked
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,7 +161,7 @@ public class TwitterUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
