@@ -10,11 +10,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+
 /**
  *
  * @author USER
  */
-public class Tweet {
+public class Tweet extends TwitterUI {
 
     public List<String> list = new ArrayList();
     String delim = " \t\n.,:;?!-/()[]\"\'";
@@ -52,12 +53,15 @@ public class Tweet {
 
     public void searchWord(String n) {
         int count = 0;
+        String keep = "";
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).toLowerCase().contains(n.toLowerCase())) {
                 System.out.println(list.get(i));
+                //keep += list.get(i) + "\n";
                 count++;
             }
         }
+        //jTextArea1.setText(keep);
         System.out.println("Found Results : "+count);
     }
 
@@ -68,8 +72,6 @@ public class Tweet {
     public void getAll() {
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));
-
         }
     }
 }
-//matches("(?i)(.*)" + n + "(.*)")
