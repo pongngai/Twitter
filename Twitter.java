@@ -31,8 +31,30 @@ public class Twitter {
         System.out.print("Input : ");
         String n = sc.next();
         System.out.println("");
-        tw.searchWord(n);*/
+        tw.searchWord(n);
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        SelectData(input);*/
+        AddData("Test","Test","Test","Test","Test");
+    }
+    
+        public static void AddData(String name,String text,String location,String device,String created){
         try{
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/twitter?zeroDateTimeBehavior=convertToNull","root","root");
+        PreparedStatement p = connection.prepareStatement("INSERT INTO TWEETS (name,text,location,device,created) VALUES (?,?,?,?,?)");
+        p.setString(1,name);
+        p.setString(2,text);
+        p.setString(3,location);
+        p.setString(4,device);
+        p.setString(5,created);
+        p.executeUpdate();
+        }catch(Exception e){
+            
+        }
+        }
+        
+        public static void SelectData(String idbooks){
+            try{
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/twitter?zeroDateTimeBehavior=convertToNull","root","root");
         PreparedStatement p = connection.prepareStatement("SELECT * FROM tweets");
         ResultSet resultSet = p.executeQuery();
@@ -42,6 +64,7 @@ public class Twitter {
         }catch(Exception e){
             
         }
+        }
     }
     
-}
+
