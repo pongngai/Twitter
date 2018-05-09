@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test;
+package Twitter.CSC319oosd;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -56,14 +56,11 @@ public class Tweet extends TwitterUI {
         keep = "";
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).toLowerCase().contains(n.toLowerCase())) {
-                System.out.println(list.get(i));
                 keep += list.get(i) + "\n";
                 count++;
             }
         }
         keep = keep + "\n" + "Found Results : "+count;
-        System.out.println("Found Results : "+count);
-        System.out.println("-----------------------------------------------");
         
     }
 
