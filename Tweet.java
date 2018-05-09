@@ -61,6 +61,7 @@ public class Tweet extends TwitterUI {
                 count++;
             }
         }
+        keep = keep + "\n" + "Found Results : "+count;
         System.out.println("Found Results : "+count);
         System.out.println("-----------------------------------------------");
         
