@@ -99,7 +99,7 @@ public class TwitterUI extends javax.swing.JFrame {
 
         jPanel1.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 100, 40));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Twitter/CSC319oosd/projectimage/bloggif_5afdf5cfbdb24.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Twitter/bloggif_5afdf5cfbdb24.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -111,7 +111,7 @@ public class TwitterUI extends javax.swing.JFrame {
         jLabel1.setText("Home");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 102, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Twitter/CSC319oosd/projectimage/bloggif_5afdf392c9cd8.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Twitter/bloggif_5afdf392c9cd8.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 620));
@@ -374,7 +374,7 @@ public class TwitterUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_close;
-    private java.awt.Choice choice1;
+    public java.awt.Choice choice1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -382,7 +382,7 @@ public class TwitterUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    public javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;

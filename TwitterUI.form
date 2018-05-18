@@ -99,7 +99,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Twitter/CSC319oosd/projectimage/bloggif_5afdf5cfbdb24.png"/>
+              <Image iconType="3" name="/Twitter/bloggif_5afdf5cfbdb24.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -140,7 +140,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Twitter/CSC319oosd/projectimage/bloggif_5afdf392c9cd8.png"/>
+              <Image iconType="3" name="/Twitter/bloggif_5afdf392c9cd8.png"/>
             </Property>
           </Properties>
           <Constraints>
