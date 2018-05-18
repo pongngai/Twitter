@@ -6,20 +6,26 @@
 package Twitter.CSC319oosd;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.*;
 
 /**
  *
  * @author USER
  */
-public class Tweet extends TwitterUI {
+public class Tweet {
 
-    public List<String> list = new ArrayList();
-    String delim = " \t\n.,:;?!-/()[]\"\'";
-    String line;
-    String keep;
+    public ArrayList<Information> list = new ArrayList<Information>();
+    String keepWord = "";
+    String keepUsername = "";
+    String wordCount;
+    String userCount;
     int count = 0;
 
     public Tweet(String n) throws IOException {
@@ -27,23 +33,22 @@ public class Tweet extends TwitterUI {
     }
 
     public void setTweet(String filename) throws IOException {
+        String path = filename;
+        File file = new File(path);
         try {
-            FileReader in = new FileReader(filename);
-            BufferedReader b = new BufferedReader(in);
-            String text = b.readLine();
-            String keep = "";
-            while (text != null) {
-                keep = keep + text + "\n";
-                text = b.readLine();
-                if (text == null || text.trim().isEmpty()) {
-                    list.add(keep);
-                    count++;
-                    keep = "";
-                    text = b.readLine();
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line = br.readLine();
+            while (line != null) {
+                String[] arr = line.split(",");
+                if (arr.length != 0 && arr.length == 6) {
+                    //t.AddData(arr[0],arr[1],arr[2],arr[3],arr[4],arr[5]);
+                    list.add(new Information(arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]));
                 }
+                line = br.readLine();
             }
+            br.close();
         } catch (IOException e) {
-            System.out.println("Error!");
+            e.printStackTrace();
         }
     }
 
@@ -53,26 +58,58 @@ public class Tweet extends TwitterUI {
 
     public void searchWord(String n) {
         int count = 0;
-        keep = "";
+        int j = 0;
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).toLowerCase().contains(n.toLowerCase())) {
-                keep += list.get(i) + "\n";
+            if (list.get(i).getText().contains(n)) {
+                keepWord += list.get(i).toString();
                 count++;
             }
         }
-        keep = keep + "\n" + "Found Results : "+count;
-        
+        wordCount = Integer.toString(count);
     }
 
-    public String getTweet(int i) {
-        return list.get(i);
+    public void searchUsername(String n) {
+        int count = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getName().contains(n)) {
+                keepUsername += list.get(i).toString();
+                count++;
+            }
+        }
+        userCount = Integer.toString(count);
     }
 
     public void getAll() {
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
+        for (Information i : list) {
+            System.out.println(i.toString());
+        }
+    }
+
+    public static void AddData(String id, String name, String text, String location, String device, String created) {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/twitter?zeroDateTimeBehavior=convertToNull", "root", "root");
+            PreparedStatement p = connection.prepareStatement("INSERT INTO TWEETS (idtweets,name,text,location,device,created) VALUES (?,?,?,?,?,?)");
+            p.setString(1, id);
+            p.setString(2, name);
+            p.setString(3, text);
+            p.setString(4, location);
+            p.setString(5, device);
+            p.setString(6, created);
+            p.executeUpdate();
+        } catch (Exception e) {
 
         }
     }
+
+    public static void SelectData(String idbooks) {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/twitter?zeroDateTimeBehavior=convertToNull", "root", "root");
+            PreparedStatement p = connection.prepareStatement("SELECT * FROM tweets");
+            ResultSet resultSet = p.executeQuery();
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString("name"));
+            }
+        } catch (Exception e) {
+        }
+    }
 }
-//matches("(?i)(.*)" + n + "(.*)")
